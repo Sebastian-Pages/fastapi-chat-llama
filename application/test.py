@@ -1,0 +1,12 @@
+import http.client
+
+conn = http.client.HTTPConnection("127.0.0.1",8000)
+
+headers = { 'authorization': "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ii1ac3Q1U1B6cHV2d1RwNlcwWnVyaSJ9.eyJpc3MiOiJodHRwczovL2Rldi1qd2t1dTg1NC51cy5hdXRoMC5jb20vIiwic3ViIjoiUXBSSVFVUDdxdjZobVh5eGNVRk5VVjJlb3ZkVnN4cTVAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vZmFzdGFwaV9hdXRoMF90dXRvcmlhbC5Db20iLCJpYXQiOjE2ODY1NzYzMzMsImV4cCI6MTY4NjY2MjczMywiYXpwIjoiUXBSSVFVUDdxdjZobVh5eGNVRk5VVjJlb3ZkVnN4cTUiLCJndHkiOiJjbGllbnQtY3JlZGVudGlhbHMifQ.cCyTCdql6WHXJlx6iQBC_WRh7TVc-38VzyKusZsqV7mWL4pk0OX5XGxZ_N8ULMyhOBA-RQZqatp3siMXew-I3EA8FovJCm6iAOB9BowuriDsFLLy5q5UtgOb4BeeZ14Q2o_g4vtULCWgwRFfmPxPXe75IG2EFWPnlrXhRz7NZO72s9ssZZ5gWAmv9cyGqyIxN6wGQx36JD4aY3AAFVZgT2PYgLJV6YNwp3WqYl3uQ2_h3uubOw5R9UqmOO5NlpYkSC_SN8d5h096OQ_I9UXt2I2kqFlmPJZQp0t5id71NOpXDG9JlhOh6Cis3gn_oaRnr2Mk8IgsKyioKpYZMezj4Q" }
+
+conn.request("GET", "/api/private", headers=headers)
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))
