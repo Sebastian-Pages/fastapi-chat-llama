@@ -1,78 +1,71 @@
-# Protecting your FastAPI API with Auth0
+# Project Name
 
-## Running the example
+API using Vicuna LLM to generate text in a game.
 
-In order to run the example you need to have `python3` (any version higher than `3.6`) and `pip3` installed, you'll also need an Auth0 account, [you can get your Auth0 account for free here](https://a0.to/jtemporal-signup-for-auth0).
+## Table of Contents
 
-### Configuration
+-   [Introduction](#introduction)
+-   [Features](#features)
+-   [Installation](#installation)
+-   [Usage](#usage)
+-   [API Documentation](#api-documentation)
+-   [Contributing](#contributing)
+-   [License](#license)
 
-The configuration you'll need is mostly information from Auth0, you'll need both the tentant domain and the API information.
+## Introduction
 
-This app reads its configuration information from a `.config` file by default.
+This project is a game that utilizes a local language model (LLM) to generate text-based content. It is designed to work in conjunction with a React app, providing an interactive and dynamic gaming experience. The game is built using FastAPI, a modern, fast (high-performance), web framework for building APIs with Python.
 
-To create a `.config` file you can copy the `.example.config` file and fill the values accordingly:
+The React app serves as the frontend interface for the game, allowing players to interact with the game world, participate in campaigns, and engage in chat-based gameplay. The local language model (LLM) is responsible for generating text-based prompts and responses, providing dynamic storytelling and decision-making elements to the game.
 
-```console
-cp .example.config .config
-# update the config file for the correct values
-export ENV='.config'
+## Features
+
+-   User authentication and authorization
+-   CRUD operations for campaigns and users
+-   Chat functionality for interacting with campaigns
+
+## Installation
+
+To install and run the project locally, follow these steps:
+
+1. Clone the repository:
+
+```shell
+git clone https://github.com/your-username/project-name.git
 ```
 
-You can change this behavior by setting the following environment variables (remember to update the values accordingly):
+2. Install the dependencies:
 
-```console
-export ENV='variables'
-export DOMAIN='your.domain.auth0.com'
-export API_AUDIENCE='your.api.audience'
-export ISSUER='https://your.domain.auth0.com'
-export ALGORITHMS='RS256'
-```
-
-### Spin up the server
-
-Once you've set your environment information below you'll find the commands you'll need.
-
-1. Create and activate a python environment:
-
-```console
-python3 -m venv .env
-source .env/bin/bash
-```
-
-2. Install the needed dependencies with:
-
-```console
+```shell
+cd project-name
 pip install -r requirements.txt
 ```
 
-3. Start the server with the following:
+3. Set up the environment variables:
+   Create a .env file in the root directory of the project.
+   Add the following variables to the .env file and provide appropriate values using `example_config`.
 
-```console
-uvicorn application.main:app
+4. Run the FastAPI app:
+
+```shell
+uvicorn main:app --reload
 ```
 
-4. Try calling [http://localhost:8000/api/public](http://localhost:8000/api/public)
+The app will be available at http://localhost:8000.
 
-```
-curl -X 'GET' \
-  'http://localhost:8000/api/public' \
-  -H 'accept: application/json'
-```
+## Usage
 
-## API documentation
+To use the project, follow these steps:
 
-Access [http://localhost:8000/docs](http://localhost:8000/docs). From there you'll see all endpoints and can test your API
+Start the FastAPI app as described in the installation steps.
+Open the React app in your web browser.
+The React app should be available at http://localhost:3000 by default.
+Follow the instructions provided in the React app to create an account, join campaigns, and interact with the game world.
+Enjoy the game!
+API Documentation
 
-## Examples in this repo
+When running the FastAPI app, the API documentation will be available at http://localhost:8000/docs. It provides detailed information about each API endpoint, including request and response formats, authentication requirements, and other relevant details.
 
-| Branch name      | Example                                                                    |
-| ---------------- | -------------------------------------------------------------------------- |
-| `main`           | The starter sample only has two endpoints and one of them needs protection |
-| `private`        | The result of protecting the first endpoint with Auth0                     |
-| `private-scoped` | Implemented a protected endpoint with checks for scopes                    |
+## License
 
-[AUTH0]
-DOMAIN = dev-jwkuu854.us.auth0.com
-API_AUDIENCE = https://fastapi_auth0_tutorial.Com
-ISSUER = https://dev-jwkuu854.us.auth0.com/
-ALGORITHMS = RS256
+This project is licensed under the MIT License.
