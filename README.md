@@ -1,4 +1,4 @@
-# Project Name
+# FastAPI Llama Chat
 
 API using Vicuna LLM to generate text in a game.
 
